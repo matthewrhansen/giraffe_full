@@ -55,8 +55,9 @@ $(".section_full.is-dark").each(function (index) {
 barba.init({
   transitions: [
     {
-    name: "opacity-transition",
+    preventRunning: true,  
     enter(data) {
+      updateCurrentClass();
       gsap.to(data.current.container, {
         opacity: 0,
         duration: 1
