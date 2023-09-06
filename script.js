@@ -51,9 +51,7 @@ $(".section_full.is-dark").each(function (index) {
     }
   });
 });
-</script>
 
-<script>
 barba.init({
   transitions: [{
     name: 'opacity-transition',
