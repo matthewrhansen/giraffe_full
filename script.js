@@ -69,10 +69,6 @@ barba.init({
     preventRunning: true,  
     enter(data) {
       updateCurrentClass();
-      gsap.to(data.current.container, {
-        opacity: 0,
-        duration: 1
-      });
       $(data.next.container).addClass("fixed");
       return gsap.from(data.next.container, {
         opacity: 0,
