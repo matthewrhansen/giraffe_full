@@ -53,12 +53,13 @@ $(".section_full.is-dark").each(function (index) {
 });
 
 barba.init({
-  transitions: [{
-    name: 'opacity-transition',
-    leave(data) {
-      return gsap.to(data.current.container, {
+  transitions: [
+    {
+    name: "opacity-transition",
+    enter(data) {
+      gsap.to(data.current.container, {
         opacity: 0,
-        duration: 2
+        duration: 1
       });
       $(data.next.container).addClass("fixed");
       return gsap.from(data.next.container, {
