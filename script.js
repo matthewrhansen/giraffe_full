@@ -23,7 +23,7 @@ $(".section.is-light").each(function (index) {
     trigger: $(this),
     start: "30px bottom",
     end: "+=100",
-    markers: true,
+    markers: false,
     onEnter: () => {
       $(".nav_wrap").addClass("sm0.1");
       $(".nav_wrap").removeClass("nav_transform");
@@ -40,7 +40,7 @@ $(".section_full.is-dark").each(function (index) {
     trigger: $(this),
     start: "30px top",
     end: "+=100",
-    markers: true,
+    markers: false,
     onEnter: () => {
       $(".nav_wrap").removeClass("sm0.1");
       $(".nav_wrap").addClass("nav_transform");
@@ -51,6 +51,17 @@ $(".section_full.is-dark").each(function (index) {
     }
   });
 });
+
+//barba js
+
+function updateCurrentClass() {
+  $(".w--current").removeClass("w--current");
+  $(".nav_wrap.nav_transform.","nav_wrap.is-top").each(function (index) {
+    if ($(this).attr("href") === window.location.pathname) {
+      $(this).addClass("w--current");
+    }
+  });
+}
 
 barba.init({
   transitions: [
