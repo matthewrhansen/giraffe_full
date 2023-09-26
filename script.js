@@ -9,6 +9,8 @@ function resetWebflow(data) {
 }
 
 //NAV CODE
+
+//nav hide and unhide when scrolling back up
 let bodyScrollDirection;
 ScrollTrigger.create({
   trigger: "body",
@@ -50,46 +52,32 @@ $(".nav_link--tt2").on("mouseleave", function () {
 
 //change menu color on scroll
 
-// For light sections
-$(".section.is-light").each(function (index) {
-  ScrollTrigger.create({
-    trigger: $(this),
-    start: "30px bottom",
-    end: "+=100",
-    markers: false,
-    onEnter: () => {
-      $(".nav_wrap,.nav_wrap_bottom").addClass("nav_light");
-    },
-    onEnterBack: () => {
-      $(".nav_wrap,.nav_wrap_bottom").addClass("nav_light");
-    },
-    onLeave: () => {
-      $(".nav_wrap,.nav_wrap_bottom").removeClass("nav_light");
-    },
-    onLeaveBack: () => {
-      $(".nav_wrap,.nav_wrap_bottom").removeClass("nav_light");
-    }
-  });
+//For photo sections ".is-photo-bg" class
+// Check for initial page load
+$(document).ready(function() {
+  if($(".section.is-photo-bg").offset().top === 0) {
+    $(".navbar_component.is-top").addClass("sm0.2");
+  }
 });
 
-// For dark sections
-$(".section_full.is-dark").each(function (index) {
+// ScrollTrigger event
+$(".section.is-photo-bg").each(function (index) {
   ScrollTrigger.create({
     trigger: $(this),
-    start: "30px top",
-    end: "+=100",
+    start: "top bottom",
+    end: "bottom top",
     markers: false,
     onEnter: () => {
-      $(".nav_wrap").addClass("nav_transition--sm0.1-bg0");
-    },
-    onEnterBack: () => {
-      $(".nav_wrap").addClass("nav_transition--sm0.1-bg0");
+      $(".navbar").addClass("sm0.2");
     },
     onLeave: () => {
-      $(".nav_wrap").removeClass("nav_transition--sm0.1-bg0");
+      $(".nav_wrap").removeClass("sm0.2");
+    },
+    onEnterBack: () => {
+      $(".nav_wrap").addClass("sm0.2");
     },
     onLeaveBack: () => {
-      $(".nav_wrap").removeClass("nav_transition--sm0.1-bg0");
+      $(".nav_wrap").removeClass("sm0.2");
     }
   });
 });
